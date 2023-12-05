@@ -4,6 +4,9 @@ const morgan = require('morgan')
 const mysql = require('mysql')
 const myConnection = require('express-myconnection')
 
+
+require('dotenv').config()
+
 //Importing rountes
 
 
@@ -26,8 +29,8 @@ app.use(morgan('dev'))
 
 app.use(myConnection(mysql,{
     host:'db4free.net',
-    user:'naoryk',
-    password:'cesargoku',
+    user: process.env.DBUSER,
+    password:process.env.DBPASSWORD,
     port:'3306',
     database:'dbmysqlnao'
 },'single'))
